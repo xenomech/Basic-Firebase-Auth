@@ -1,6 +1,11 @@
 import 'package:firebase_auth/firebase_auth.dart';
 
 class AuthService {
+  // creating a user model based on firebase user
+  User _fromfirebaseuser(FirebaseUser user) {
+    return user != null ? User(uid: user.uid, name: user.displayName) : null;
+  }
+
   // sign in with email and password
   Future signinwithEmailandPassword(String email, String password) async {
     try {
